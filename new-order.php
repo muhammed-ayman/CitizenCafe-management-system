@@ -46,6 +46,8 @@
           </select>
           <input type="text" name="order-price" id="order-count" placeholder="العدد">
           <button type="button" name="addOrder" onclick="addOrder()">إضافة طلب</button>
+          <button type="button" name="saveOrder" onclick="saveOrder()" id="saveorder">حفظ الطلب</button>
+          <button type="button" name="printOrder" onclick="printOrder()" id="printorder">طباعة الطلب</button>
         </div>
 
         <div class="orders">

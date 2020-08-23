@@ -116,50 +116,10 @@
               <th>العدد</th>
               <th>اﻹجمالي</th>
             </tr>
-            <!--<tr>
-              <td>6:25</td>
-              <td>1/1/2020</td>
-              <td>قهوة</td>
-              <td>5</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>6:25</td>
-              <td>1/1/2020</td>
-              <td>قهوة</td>
-              <td>5</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>6:25</td>
-              <td>1/1/2020</td>
-              <td>قهوة</td>
-              <td>5</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>6:25</td>
-              <td>1/1/2020</td>
-              <td>قهوة</td>
-              <td>5</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>6:25</td>
-              <td>1/1/2020</td>
-              <td>قهوة</td>
-              <td>5</td>
-              <td>50</td>
-            </tr>-->
           </table>
         </div>
 
         <div class="orders-pages" id="orders-pages">
-          <!--<button type="button" name="page-btn" value="1">1</button>
-          <button type="button" name="page-btn" value="2">2</button>
-          <button type="button" name="page-btn" value="3">3</button>
-          <button type="button" name="page-btn" value="4">4</button>
-          <button type="button" name="page-btn" value="5">5</button>-->
         </div>
 
       </div>
@@ -173,7 +133,11 @@
     </div>
 
     <script type="text/javascript" src="scripts/table-pagination.js"></script>
-
+    <?php require 'php/get-orders.php'; ?>
+    <script type="text/javascript">
+      // SETUP THE INITIAL TABLE
+      makeTable(1,tableData);
+    </script>
 
   </body>
 </html>

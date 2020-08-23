@@ -49,15 +49,27 @@ a{
   border-radius: 5px;
   padding: 5px;
   height: 47px;
-  width: 150px;
+  width: 140px;
   color: #fff;
   background-color: #e09600;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 4px;
   font-family: kufi;
   font-size: 18px;
   font-weight: bold;
   outline: none;
+}
+#saveorder{
+  border: 1px solid red;
+  background-color: red;
+  width: 120px;
+  margin-right: 20px;
+}
+#printorder{
+  border: 1px solid green;
+  background-color: green;
+  width: 120px;
+  margin-right: 0px;
 }
 
 /** CONTENT TABLE**/
@@ -93,6 +105,7 @@ td, th{
   border: 4px solid #fff;
   border-radius: 2px;
   width: 150px;
+  height: 46.5px;
   padding-right: 5px;
   cursor: pointer;
   outline: none;

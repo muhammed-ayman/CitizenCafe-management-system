@@ -9,6 +9,24 @@ productData = []
 // TEMPORARY data
 tempData = []
 
+// SAVE ORDER
+function saveOrder() {
+  for (var i = 0; i < tempData.length; i++) {
+    var curdat = tempData[i];
+    $.ajax({
+      type : "POST",
+      url  : "./php/add-order.php",
+      data : { product : curdat['product'], number:curdat['number'], price : curdat['price']},
+      success: function(res){
+        alert('تم حفظ الطلب بنجاح');
+        tempData = [];
+        changePage(1,tempData);
+      }
+    });
+  }
+}
+
+
 // ADD OPTIONS
 function addOptions() {
   for (var i = 0; i < productData.length; i++) {
