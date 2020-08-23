@@ -1,0 +1,110 @@
+
+/** GENENRAL **/
+
+*{
+  margin:0;
+  padding:0;
+}
+ul {
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+
+
+/** CONTENT **/
+
+.content{
+  background-color: #332e31;
+  height: 630px;
+  color: #fff;
+  text-align: center;
+  padding-top: 57px;
+  font-family: kufi;
+}
+.content .content-content{
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 70%;
+  font-size: 23px;
+}
+
+/** CONTENT: ADD PRODUCT**/
+
+.content input{
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  padding: 5px;
+  padding-right: 15px;
+  width: 180px;
+  font-family: kufi;
+  font-size: 18px;
+  outline: none;
+}
+.content .add-product button{
+  border: 1px solid #e09600;
+  border-radius: 5px;
+  padding: 5px;
+  height: 47px;
+  width: 150px;
+  color: #fff;
+  background-color: #e09600;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: kufi;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+}
+
+/** CONTENT TABLE**/
+.content .content-content table{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+table img{
+  height: 23px;
+  cursor: pointer;
+  position: relative;
+  top: 25%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+th{
+  color:#e09600;
+}
+td, th{
+  height: 60px;
+  width: 100px;
+  border: 1px solid #fff;
+}
+.prod-name{
+  width: 400px;
+}
+.products-pages{
+  margin-top: 16px;
+}
+.products-pages button{
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 3px;
+  width: 35px;
+  font-family: segoe;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+}
+.products-pages .specialbtn{
+  width: 60px;
+}

@@ -1,0 +1,16 @@
+
+/** Footer **/
+
+.footer{
+  background-color:#1c1f1e;
+  height: 100px;
+  color: #fff;
+  font-family: TSRotger;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 50px;
+}
+.footer a{
+  color: #fff;
+  text-decoration: underline;
+}

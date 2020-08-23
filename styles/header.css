@@ -1,0 +1,96 @@
+
+/** Fonts **/
+
+@font-face {
+  font-family: segoe;
+  src: url('../fonts/Segoe UI.ttf');
+}
+@font-face {
+  font-family: TSRotger;
+  src: url('../fonts/TSRotger.otf');
+}
+@font-face {
+  font-family: kufi;
+  src: url('../fonts/Kufi.ttf');
+}
+
+/** Header **/
+
+.header {
+  background-image: url('../images/background.png');
+  background-size: 100%;
+  background-position: bottom center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 250px;
+  color: #fff;
+  text-align: center;
+}
+.header .header-layer{
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.6);
+}
+.header .header-content{
+  margin:0 auto;
+  width: 60%;
+  height: 250px;
+}
+.header #cafe-name{
+  font-size: 35px;
+  font-family: segoe;
+  font-weight: 800;
+  padding-top: 20px;
+}
+.header-content #cafe-slogan{
+  font-size: 33px;
+  font-family: TSRotger;
+  font-weight: 800;
+}
+.nav-bar{
+  margin: 0 auto;
+  margin-top: 23.5px;
+  width: 100%;
+  height: 48.5%;
+}
+.header img{
+  height: 35px;
+  width: 35px;
+}
+.header ul{
+  font-size: 18px;
+  font-family: TSRotger;
+  text-align: center;
+  height: 100%;
+}
+.header ul li{
+  display: inline-block;
+  background-color:rgba(34, 34, 34, 0.9);
+  height: 100%;
+  width: 32.2%;
+  margin: 0;
+  margin-right: 2px;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.header ul li:hover{
+  background-color:rgba(40, 40, 40, 1);
+}
+.header ul li img {
+    display: inline-block;
+    position: relative;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.header ul li span {
+    display: inline-block;
+    position: relative;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.header ul a{
+  color: #fff;
+}
