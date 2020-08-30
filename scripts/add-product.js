@@ -6,6 +6,29 @@ var currpg = 1;
 // PRODUCTS DATA
 productData = []
 
+// CONSTANT DATA TABLE
+var filterData = []
+
+
+// FILTER FUNCTIONS
+function viewBy() {
+  var productTypeFilter = document.getElementById('product-type-filter').value;
+  if (productTypeFilter.length > 0) {
+    productData = filterData;
+    productData = productData.filter(({productType}) => !productType.includes(productTypeFilter)==false);
+    changePage(1);
+    document.getElementById('product-type-filter').value = "";
+  } else {
+    alert("اختر نوع الصنف");
+  }
+}
+
+function viewAll() {
+  productData = filterData;
+  changePage(1);
+  document.getElementById('product-type-filter').value = "";
+}
+
 
 // EMPTY INPUTS
 function emptyInputs() {
@@ -13,13 +36,15 @@ function emptyInputs() {
   var priceinput = document.getElementById('price');
   proinp.value = "";
   priceinput.value = "";
+  document.getElementById('product-type').value = "";
 }
 
 // CHECKING THE INPUT VALUES
 function checkValues() {
   var proName = document.getElementById('prodName').value;
   var price = document.getElementById('price').value;
-  if (proName.length > 0 && price.length > 0) {
+  var productType = document.getElementById('product-type').value;
+  if (proName.length > 0 && price.length > 0 && productType.length > 0) {
     if (isNaN(price)) {
       alert('أدخل البيانات بشكل صحيح');
     } else {
@@ -36,9 +61,9 @@ function checkValues() {
         $.ajax({
           type : "POST",
           url  : "./php/add-product.php",
-          data : { productName : proName, price : price},
+          data : { productName : proName, price : price, productType: productType},
           success: function(res){
-            var prodD = {productName:proName, price:price};
+            var prodD = {productName:proName, price:price, productType: productType};
             productData.unshift(prodD);
             emptyInputs();
             changePage(1,productData);
@@ -187,10 +212,12 @@ function buildTable(data) {
     var table = document.getElementById("fproducts-table");
     var row = table.insertRow(i+1);
     var productname = row.insertCell(0);
-    var price = row.insertCell(1);
-    var del = row.insertCell(2);
+    var productTypeCell = row.insertCell(1);
+    var price = row.insertCell(2);
+    var del = row.insertCell(3);
     productname.innerHTML = dataContent["productName"];
     price.innerHTML = dataContent["price"];
+    productTypeCell.innerHTML = dataContent["productType"];
     del.innerHTML = '<img src="images/delete.svg" proname = "'+dataContent["productName"]+'">';
   }
 }

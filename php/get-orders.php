@@ -10,6 +10,8 @@ foreach ($res as $row) {
   $prodata->product =$row[3];
   $prodata->number =$row[4];
   $prodata->price =strval($row[5]);
+  $prodata->productType =$row[6];
+  $prodata->tableName =$row[7];
   $product = json_encode($prodata, JSON_UNESCAPED_UNICODE);
   echo '<script type="text/javascript">tableData.unshift('.$product.')</script>';
 }

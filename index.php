@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
+    <script type="text/javascript" src="scripts/table-pagination.js"></script>
   </head>
   <body>
 
@@ -42,7 +43,7 @@
 
         <div class="filter">
           <p>عرض بواسطة</p>
-          <select class="year" name="month">
+          <select class="year" name="month" id="year">
             <option value="">السنة</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
@@ -56,32 +57,32 @@
             <option value="2029">2029</option>
             <option value="2030">2030</option>
           </select>
-          <select class="month" name="month">
+          <select class="month" name="month" id="month">
             <option value="">الشهر</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
           </select>
-          <select class="month" name="month">
+          <select class="day" name="day" id="day">
             <option value="">اليوم</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -105,6 +106,8 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
+          <button type="button" name="viewby" onclick="viewBy()">عرض</button>
+          <button type="button" name="viewby" onclick="viewAll()" id="allview">عرض الكل</button>
         </div>
 
         <div class="content-table">
@@ -112,7 +115,9 @@
             <tr>
               <th>الوقت</th>
               <th>التاريخ</th>
+              <th>الطاولة</th>
               <th>الصنف</th>
+              <th>نوع الصنف</th>
               <th>العدد</th>
               <th>اﻹجمالي</th>
             </tr>
@@ -132,9 +137,10 @@
       <p>Designed By: <a href="https://www.linkedin.com/in/ali-elmala/" target="_blank">Ali El-Mala</a> (+201550639519)</p>
     </div>
 
-    <script type="text/javascript" src="scripts/table-pagination.js"></script>
+
     <?php require 'php/get-orders.php'; ?>
     <script type="text/javascript">
+      filterData = tableData;
       // SETUP THE INITIAL TABLE
       makeTable(1,tableData);
     </script>

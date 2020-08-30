@@ -1,0 +1,100 @@
+
+/** Fonts **/
+
+@font-face {
+  font-family: segoe;
+  src: url('../fonts/Segoe UI.ttf');
+}
+@font-face {
+  font-family: TSRotger;
+  src: url('../fonts/TSRotger.otf');
+}
+@font-face {
+  font-family: kufi;
+  src: url('../fonts/Kufi.ttf');
+}
+
+
+/** GENERAL **/
+
+@page {
+    size: auto;
+    margin: 0;
+}
+@print {
+    @page :footer {
+        display: none
+    }
+    @page :header {
+        display: none
+    }
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  text-align: center;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  font-family: segoe;
+}
+
+/* Print Button */
+#printButton{
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  margin-top: 15px;
+  font-family: kufi;
+}
+
+/* HEADER */
+.header{
+  height: 100px;
+  font-family: TSRotger;
+  font-size: 40px;
+  padding-top: 30px;
+}
+.header hr{
+  height: 2px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 1px solid #000;
+  background-color: #000;
+}
+.details{
+  margin-top: 50px;
+  font-family: segoe;
+  font-size: 25px;
+}
+
+td, th{
+  height: 60px;
+  width: 200px;
+  border: 1px solid #000;
+}
+.datedetails{
+  margin-top: 50px;
+}
+.datedetails p{
+  font-family: TSRotger;
+  margin-top: 10px;
+}
+.datedetails span{
+  padding-left: 120px;
+}
+.datedetails #timespan{
+  padding-left: 140px;
+  margin-right: -12px;
+}

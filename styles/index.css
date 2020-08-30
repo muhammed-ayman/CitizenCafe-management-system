@@ -30,6 +30,9 @@ a{
   width: 70%;
   font-size: 23px;
 }
+
+  /** FILTER **/
+
 .content select{
   font-family: kufi;
   font-size: 18px;
@@ -56,6 +59,29 @@ select option{
   -moz-background: #fff;
   -webkit-background: #fff;
 }
+.filter button{
+  border: 1px solid #e09600;
+  border-radius: 5px;
+  padding: 5px;
+  height: 42px;
+  width: 90px;
+  color: #fff;
+  background-color: #e09600;
+  cursor: pointer;
+  margin-right: 5px;
+  font-family: kufi;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+.filter #allview{
+  border: 1px solid green;
+  background-color: green;
+  margin-right: 0px;
+}
+
+  /** TABLE **/
+
 .content .content-content table{
   margin-left: auto;
   margin-right: auto;

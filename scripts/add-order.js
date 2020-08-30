@@ -4,31 +4,37 @@ var currpg = 1;
 
 
 // PRODUCTS DATA
-productData = []
+var productData = []
+
+// CONSTANT DATA TABLE
+var filterData = []
 
 // TEMPORARY data
-tempData = []
+var tempData = []
 
-// SAVE ORDER
-function saveOrder() {
-  for (var i = 0; i < tempData.length; i++) {
-    var curdat = tempData[i];
-    $.ajax({
-      type : "POST",
-      url  : "./php/add-order.php",
-      data : { product : curdat['product'], number:curdat['number'], price : curdat['price']},
-      success: function(res){
-        alert('تم حفظ الطلب بنجاح');
-        tempData = [];
-        changePage(1,tempData);
-      }
-    });
+// CONSTANT DATA TABLE
+var filterTempData = []
+
+// CHANGE TABLE
+function changeTable() {
+  tempData = filterTempData;
+  var tableNameFilter = document.getElementById('table-number').value;
+  tempData = tempData.filter(({tableName}) => !tableName.includes(tableNameFilter)==false);
+  changePage(1);
+}
+
+// REMOVE OLD OPTIONS
+function removeOldOptions() {
+  var sel = document.getElementById('order-select');
+  for (var i = 1; i < sel.length; i++) {
+    sel.remove(i);
   }
 }
 
-
 // ADD OPTIONS
 function addOptions() {
+  removeOldOptions();
+  // ADD NEW OPTIONS
   for (var i = 0; i < productData.length; i++) {
     var proname = productData[i]['productName'];
     var option = document.createElement("option");
@@ -39,9 +45,67 @@ function addOptions() {
   }
 }
 
+// CHANGE PRODUCTS OPTION BASED ON PRODUCT TYPE
+function changeOptions() {
+  var productsType = document.getElementById('product-type-filter').value;
+  if (productsType.length > 0) {
+    productData = filterData;
+    productData = productData.filter(({productType}) => !productType.includes(productsType)==false);
+    addOptions();
+  } else{
+    removeOldOptions();
+  }
+}
+
+// PRINT ORDER
+function printOrder() {
+  var count = $('#orders-table tr').length;
+  if (count > 1) {
+    var serviceValue = document.getElementById('serviceValue').value;
+    if (serviceValue.length > 0) {
+      if (isNaN(serviceValue)==false) {
+        var tableName = document.getElementById('table-number').value;
+        window.open("./print.php?service="+serviceValue+"&tableName="+tableName, '_blank');
+      } else{
+        alert('تأكد من كتابة فيمة الخدمة بشكل صحيح');
+      }
+    } else{
+      alert('تأكد من كتابة قيمة الخدمة');
+    }
+  } else{
+    alert('تأكد من وجود طلبات');
+  }
+}
+
+// SAVE ORDER
+function saveOrder() {
+  var count = $('#orders-table tr').length;
+  if (count > 1) {
+    for (var i = 0; i < tempData.length; i++) {
+      var curdat = tempData[i];
+      $.ajax({
+        type : "POST",
+        url  : "./php/add-order.php",
+        data : { product : curdat['product'], productType: curdat['productType'], tableName: curdat['tableName'], number:curdat['number'], price : curdat['price']},
+      });
+      $.ajax({
+        type : "POST",
+        url  : "./php/delete-instant-order.php",
+        data : {id: curdat['id'], tableNumber: curdat['tableName']},
+      });
+    }
+    alert('تم حفظ الطلب بنجاح');
+    tempData = [];
+    changePage(1,tempData);
+  } else {
+    alert('تأكد من وجود طلبات');
+  }
+}
+
 // EMPTY INPUTS
 function emptyInputs() {
   var ordercount = document.getElementById('order-count');
+  document.getElementById('product-type-filter').value = "";
   ordercount.value = "";
   $(document).ready(function(e) {
     $('#order-select').val('الصنف');
@@ -52,6 +116,8 @@ function emptyInputs() {
 function checkValues() {
   var ordercount = document.getElementById('order-count').value;
   var orderselect = $("select.order-select").children("option:selected").val();
+  var orderProductType = document.getElementById('product-type-filter').value;
+  var currTableName = document.getElementById('table-number').value;
   if (orderselect != 'الصنف' && isNaN(ordercount)==false && ordercount != 0) {
     var totalPrice = ordercount;
     for (var i = 0; i < productData.length; i++) {
@@ -61,10 +127,16 @@ function checkValues() {
       }
     }
     var orderid = tempData.length + 1;
-    var initData = {product: orderselect, number: ordercount, price: totalPrice, id: orderid};
+    var initData = {product: orderselect, productType: orderProductType, number: ordercount, price: totalPrice, id: orderid, tableName: currTableName};
     tempData.unshift(initData);
+    filterTempData.unshift(initData);
     emptyInputs();
     changePage(1,tempData);
+    $.ajax({
+      type : "POST",
+      url  : "./php/add-instant-order.php",
+      data : {id: orderid, productName : orderselect, tableName:currTableName, number:ordercount, price : totalPrice, productType: orderProductType}
+    });
   } else {
     alert('أدخل البيانات بطريقة صحيحة');
   }
@@ -92,6 +164,12 @@ function deleteOrder(orderindex) {
     currpg = currpg-1;
   }
   changePage(currpg);
+  var tableName = document.getElementById('table-number').value;
+  $.ajax({
+    type : "POST",
+    url  : "./php/delete-instant-order.php",
+    data : {id: orderindex, tableNumber: tableName}
+  });
 }
 
 
@@ -194,13 +272,18 @@ function buildTable(data) {
     var table = document.getElementById("orders-table");
     var row = table.insertRow(i+1);
     var productname = row.insertCell(0);
-    var number = row.insertCell(1);
-    var price = row.insertCell(2);
-    var del = row.insertCell(3);
+    var productTypeCell = row.insertCell(1);
+    var number = row.insertCell(2);
+    var price = row.insertCell(3);
+    var del = row.insertCell(4);
     productname.innerHTML = dataContent["product"];
+    productTypeCell.innerHTML = dataContent["productType"];
     number.innerHTML = dataContent["number"];
     price.innerHTML = dataContent["price"];
     del.innerHTML = '<img src="images/delete.svg" id="'+dataContent['id']+'">';
+    del.classList.add("del-cell");
+    number.classList.add("del-cell");
+    price.classList.add("totalprice-cell");
   }
 }
 
