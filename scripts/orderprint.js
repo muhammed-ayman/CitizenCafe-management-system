@@ -16,24 +16,35 @@ function addData() {
     price.innerHTML = dataContent["price"];
     totalprice += parseFloat(dataContent["price"]);
   }
-  var dataContent = tableData[tableData.length];
-  var table = document.getElementById("printTable");
-  var row = table.insertRow(tableData.length+1);
-  var productname = row.insertCell(0);
-  var price = row.insertCell(1);
-  price.setAttribute('colspan','2');
-  productname.innerHTML = "الخدمة";
-  serviceValue = Math.round((parseFloat(serviceValue)*totalprice)/100);
-  price.innerHTML = serviceValue;
-  totalprice += parseFloat(serviceValue);
+  if (parseFloat(serviceValue) > 0) {
+    var dataContent = tableData[tableData.length];
+    var table = document.getElementById("printTable");
+    var row = table.insertRow(tableData.length+1);
+    var productname = row.insertCell(0);
+    var price = row.insertCell(1);
+    price.setAttribute('colspan','2');
+    productname.innerHTML = "الخدمة";
+    serviceValue = Math.round((parseFloat(serviceValue)*totalprice)/100);
+    price.innerHTML = serviceValue;
+    totalprice += parseFloat(serviceValue);
 
-  var table = document.getElementById("printTable");
-  var row = table.insertRow(tableData.length+2);
-  var productname = row.insertCell(0);
-  var price = row.insertCell(1);
-  price.setAttribute('colspan','2');
-  productname.innerHTML = "إجمالي الحساب";
-  price.innerHTML = totalprice;
+    var table = document.getElementById("printTable");
+    var row = table.insertRow(tableData.length+2);
+    var productname = row.insertCell(0);
+    var price = row.insertCell(1);
+    price.setAttribute('colspan','2');
+    productname.innerHTML = "إجمالي الحساب";
+    price.innerHTML = totalprice;
+  } else {
+    var table = document.getElementById("printTable");
+    var row = table.insertRow(tableData.length+1);
+    var productname = row.insertCell(0);
+    var price = row.insertCell(1);
+    price.setAttribute('colspan','2');
+    productname.innerHTML = "إجمالي الحساب";
+    price.innerHTML = totalprice;
+  }
+
 
 
 

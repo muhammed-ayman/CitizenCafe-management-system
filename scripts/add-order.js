@@ -157,7 +157,13 @@ function removeElement(array, elem) {
 
 // DELETE ORDER
 function deleteOrder(orderindex) {
-  recdata = tempData[orderindex-1];
+  for (var i = 0; i < tempData.length; i++) {
+    recruDat = tempData[i];
+    if (recruDat['id'] == orderindex) {
+      recdata = tempData[i];
+      break;
+    }
+  }
   removeElement(tempData, recdata);
   var count = $('#orders-table tr').length;
   if (count == 1) {

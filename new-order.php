@@ -63,6 +63,25 @@
               <option value="طاولة 18">طاولة 18</option>
               <option value="طاولة 19">طاولة 19</option>
               <option value="طاولة 20">طاولة 20</option>
+              <option value="أحمد فيصل">أحمد فيصل</option>
+              <option value="أحمد السيد">أحمد السيد</option>
+              <option value="اسلام">اسلام</option>
+              <option value="أحمد الجندي">أحمد الجندي</option>
+              <option value="مدحت">مدحت</option>
+              <option value="عمرو">عمرو</option>
+              <option value="عزت">عزت</option>
+              <option value="النسور">النسور</option>
+              <option value="لاند مارك">لاند مارك</option>
+              <option value="معرض القرش">معرض القرش</option>
+              <option value="Staff 1">Staff 1</option>
+              <option value="Staff 2">Staff 2</option>
+              <option value="Staff 3">Staff 3</option>
+              <option value="Takeaway 1">Takeaway 1</option>
+              <option value="Takeaway 2">Takeaway 2</option>
+              <option value="Takeaway 3">Takeaway 3</option>
+              <option value="PS room 1">PS room 1</option>
+              <option value="PS room 2">PS room 2</option>
+              <option value="PS room 3">PS room 3</option>
             </select>
             <input type="text" name="service" placeholder="خدمة (%)" id="serviceValue">
             <button type="button" name="saveOrder" onclick="saveOrder()" id="saveorder">حفظ الطلب</button>
@@ -80,6 +99,8 @@
             <option value="مشروبات غازية">مشروبات غازية</option>
             <option value="ميلك شيك">ميلك شيك</option>
             <option value="حلويات">حلويات</option>
+            <option value="مخبوزات">مخبوزات</option>
+            <option value="حساب قديم">حساب قديم</option>
           </select>
           <select class="order-select" name="order-select" id="order-select">
             <option value="الصنف">الصنف</option>
@@ -108,8 +129,7 @@
 
     <!-- FOOTER -->
     <div class="footer">
-      <p>Developed By: <a href="https://www.linkedin.com/in/muhammedayman/" target="_blank">Mohammed Ayman</a> (+201090658284)</p>
-      <p>Designed By: <a href="https://www.linkedin.com/in/ali-elmala/" target="_blank">Ali El-Mala</a> (+201550639519)</p>
+      <p>Developed By: <a href="https://www.linkedin.com/in/ali-elmala/" target="_blank">Ali El-Mala</a> (+201550639519)</p>
     </div>
 
     <!--SCRIPT-->

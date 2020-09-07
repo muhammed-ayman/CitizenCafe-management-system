@@ -72,6 +72,8 @@
             <option value="مشروبات غازية">مشروبات غازية</option>
             <option value="ميلك شيك">ميلك شيك</option>
             <option value="حلويات">حلويات</option>
+            <option value="مخبوزات">مخبوزات</option>
+            <option value="حساب قديم">حساب قديم</option>
           </select>
           <input type="text" name="product-name" id="prodName" placeholder="الصنف">
           <input type="text" name="product-price" id="price" placeholder="السعر">
@@ -98,8 +100,7 @@
 
     <!-- FOOTER -->
     <div class="footer">
-      <p>Developed By: <a href="https://www.linkedin.com/in/muhammedayman/" target="_blank">Mohammed Ayman</a> (+201090658284)</p>
-      <p>Designed By: <a href="https://www.linkedin.com/in/ali-elmala/" target="_blank">Ali El-Mala</a> (+201550639519)</p>
+      <p>Developed By: <a href="https://www.linkedin.com/in/ali-elmala/" target="_blank">Ali El-Mala</a> (+201550639519)</p>
     </div>
 
     <!--SCRIPT-->
